@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.urls import path,include
 from django.contrib.auth import views as auth_views
 from accounts import views
-
+from accounts.views import image_detailview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.HomePage.as_view(),name='home'),
+    #path('',views.HomePage.as_view(),name='home'),
     path('accounts/',include('accounts.urls')),
-     path('user_page/',views.user_page.as_view(),name='user_page'),
+     #path('user_page/',views.user_loginpage,name='user_page'),
     path('thanks/',views.thankspage.as_view(),name='thanks'),
+    path('',views.Homepage,name='homepage'),
+    path('movie/<int:pk>/', views.image_detailview.as_view(),name='detail'),
 
 ]

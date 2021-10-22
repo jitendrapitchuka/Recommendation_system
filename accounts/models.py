@@ -12,12 +12,11 @@ class User(auth.models.User,auth.models.PermissionsMixin):
 
 
 
-
 class movie(models.Model):
-    index=models.IntegerField()
+    index=models.IntegerField(primary_key=True)
     movie_id=models.IntegerField()
-    title=models.CharField(max_length=20)
-    genres=models.CharField(max_length=30)
+    title=models.CharField(max_length=120)
+    genres=models.CharField(max_length=130)
     imdb_id=models.IntegerField()
     tmdb_id=models.IntegerField()
     Image_url=models.URLField(max_length=200)

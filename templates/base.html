@@ -15,13 +15,15 @@
     <nav class="navbar mynav" role="navigation" id='navbar'>
 
         <div class="container">
-            <a class='navbar-brand mynav' href="{%url 'home'%}">Recommendation system</a>
+            <a class='navbar-brand mynav' href="{%url 'homepage'%}">Recommendation system</a>
 
 <ul class="nav navbar-nav navbar-right">
+
     {%if user.is_authenticated%}
  
  <li><a href="{%url 'accounts:logout'%}">logout</a></li>
-
+ <li><a href="#">My list</a></li>
+<li>welcome {{user.username}}</li>
  {%else%}
 
 
