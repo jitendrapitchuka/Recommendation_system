@@ -22,7 +22,7 @@
     {%if user.is_authenticated%}
  
  <li><a href="{%url 'accounts:logout'%}">logout</a></li>
- <li><a href="#">My list</a></li>
+ <li><a href="{%url 'my_list'%}">My list</a></li>
 <li>welcome {{user.username}}</li>
  {%else%}
 

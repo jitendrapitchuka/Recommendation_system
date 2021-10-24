@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% if user.is_authenticated %}
-<div class="row">
+<div class="row" class="d-flex justify-content-center">
     
     <div class="col-sm-2 col-md-2">
       <div class="thumbnail">
@@ -17,7 +17,10 @@
       
       </div>
     </div>
-      
+    <div>
+   <a href="{% url 'movie_add' movie.pk %}" class="btn btn-outline-primary">Add to my list</button>
+    </a>
+  </div>
     </div>
     {%else%}
   <h1>login Required </h1>

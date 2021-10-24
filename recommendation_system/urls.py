@@ -27,5 +27,6 @@ urlpatterns = [
     path('thanks/',views.thankspage.as_view(),name='thanks'),
     path('',views.Homepage,name='homepage'),
     path('movie/<int:pk>/', views.image_detailview.as_view(),name='detail'),
-
+    path('movie_add/<int:pk>',views.add_movie,name="movie_add"),
+    path('list/',views.my_list,name='my_list'),
 ]
