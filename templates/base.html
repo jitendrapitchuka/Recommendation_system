@@ -12,7 +12,8 @@
 
 </head>
 <body>
-    <nav class="navbar mynav" role="navigation" id='navbar'>
+    
+    <nav class="navbar mynav"  role="navigation" id='navbar'>
 
         <div class="container">
             <a class='navbar-brand mynav' href="{%url 'homepage'%}">Recommendation system</a>
@@ -23,7 +24,8 @@
  
  <li><a href="{%url 'accounts:logout'%}">logout</a></li>
  <li><a href="{%url 'my_list'%}">My list</a></li>
-<li>welcome {{user.username}}</li>
+ 
+<li class="">welcome {{user.username}}</li>
  {%else%}
 
 
@@ -31,13 +33,13 @@
  <li><a href="{%url 'accounts:signup'%}">signup</a></li>
  {%endif%}
 </ul>
+ </div>
+  </nav>
 
+  
+   
+    
 
-
-        </div>
-
-
-    </nav>
     <div class="container">
         {%block content%}
 

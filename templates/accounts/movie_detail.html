@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 {% if user.is_authenticated %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <div class="alert alert-success">
+              <strong>Success!</strong> {{message}}
+            </div>
+        {% endfor %}
+    </ul>
+{% endif %}
 <div class="row" class="d-flex justify-content-center">
     
     <div class="col-sm-2 col-md-2">

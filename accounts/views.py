@@ -1,8 +1,9 @@
     
-from django.shortcuts import render,get_object_or_404,HttpResponseRedirect
+from django.shortcuts import render,get_object_or_404,HttpResponseRedirect,redirect
 from django.views.generic import TemplateView,CreateView,DetailView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from . import forms
+from django.contrib import messages
 from django.contrib.auth import views as auth_views
 from .models import movie,fav
 from django.contrib.auth.models import User
@@ -10,28 +11,43 @@ from django.core.paginator import Paginator
 
 class SignUp(CreateView):
     form_class=forms.UserCreateForm
-    success_url=reverse_lazy('templates/login')
+    success_url=reverse_lazy('accounts:login')
     template_name='signup.html'
 
 
 def add_movie(request,pk):
     
+    # if fav.objects.filter(movie=pk,user=request.user.pk).exists():
+    #    fav.objects.filter(movie=pk,user=request.user.pk).delete()
+    # else:
+        
+    #     print(request.user.id)
+    #     user=User.objects.filter(id=request.user.id)
+    #     print(user)
+    #     fav(movie=pk,user=user).save()
+    
+    # return HttpResponseRedirect('accounts/movie_detail.html')
     if fav.objects.filter(movie=pk,user=request.user.pk).exists():
-       fav.objects.filter(movie=pk,user=request.user.pk).delete()
+        fav.objects.filter(movie=pk,user=request.user.pk).delete()
+        messages.success(request, 'Removed from list.')
     else:
         
         print(request.user.id)
-        user=User.objects.filter(id=request.user.id)
+        movie_obj = movie.objects.filter(index=pk).first()
+        user=User.objects.filter(id=request.user.id).first()
         print(user)
-        fav(movie=pk,user=user).save()
-    
-    return HttpResponseRedirect('accounts/movie_detail.html')
+        fav_obj = fav(movie=movie_obj,user=user)
+        messages.success(request, 'Added to list.')
+        fav_obj.save()
+    return redirect('detail',pk)
 
 
 
 def my_list(request):
-#    temp= .filter( =request.user)
-  return render(request, 'my_list.html')
+    
+    temp=fav.objects.all().filter(user=request.user)
+    
+    return render(request, 'my_list.html',{'temp':temp})
 
 
 def Homepage(request):
