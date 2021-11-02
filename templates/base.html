@@ -24,7 +24,7 @@
  <li><a href="{%url 'accounts:logout'%}">logout</a></li>
  <li><a href="{%url 'my_list'%}">My list</a></li>
  
-<li class="">welcome {{user.username}}</li>
+
  {%else%}
 
 
@@ -34,9 +34,29 @@
 </ul>
  </div>
   </nav>
+  <div>
+      <center>
 
+    {%if user.is_authenticated%}
+        welcome {{user.username}}
+      </center>
+      {%endif%}
+  </div>
+
+ <br>
+ <br>
+      <form action="{%url 'search'%}" method="POST">
+          {%csrf_token%}
+          <center>
+            
+  <input type="search" class="form-control mb-2 mr-sm-2" placeholder="search" id="search" name="searched">
+  <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </center>
+      </form>
   
    
+   <br>
+   <br>
     
 
     <div class="container">

@@ -29,4 +29,5 @@ urlpatterns = [
    path('movie/<int:pk>/', views.image_detailview.as_view(),name='detail'),
   path('<int:pk>/',views.add_movie,name="movie_add"),
     path('list/',views.my_list,name='my_list'),
+    path('searchresults/',views.search_results,name='search'),
 ]

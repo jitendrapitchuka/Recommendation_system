@@ -46,6 +46,18 @@ def add_movie(request,pk):
     return redirect('detail',pk)
 
 
+def search_results(request):
+    if request.method=='POST':
+        searched=request.POST['searched']
+        movies_obj=movie.objects.filter(title__contains=searched)
+        return render(request, 'search.html',{'movies_obj':movies_obj})
+    else:
+        
+        return render(request, 'search.html',{})
+
+
+
+
 
 def my_list(request):
     
@@ -134,7 +146,7 @@ class image_detailview(View):
 
             print(get_title_from_index(x[0]))
             i=i+1
-            if i>10:
+            if i>17:
                 break
         print(li)
         return render(request,'accounts/movie_detail.html',{'li':li,'movie':movies_detail})

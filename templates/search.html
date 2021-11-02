@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+{%if movies_obj%}
+<div class="row" >
+{%for x in movies_obj%}
+
+  
+  <div class="col-sm-2 col-md-2">
+    <div class="thumbnail">
+    <div class="card">
+     <a href="{%url 'detail' x.pk%}">
+        <img src="{{x.Image_url}}"  style="width:100%" alt="Card image" class="rounded">
+      </a>
+
+        <div class="card-title text-center">
+          {{x.title}}
+        </div>
+      </div>
+    
+    </div>
+  </div>
+    
+
+  
+  {%endfor%}
+</div>
+{%else%}
+<h3>You forgot for search</h3>
+{%endif%}
+{%endblock%}
