@@ -3,6 +3,7 @@ python version=3.8.10
 
 
 ### installation
-pip pip install -r requirements.txt 
+- pip  install -r requirements.txt 
 
-### clone mine repository to your system locally
+### clone 
+- clone this repository to your system locally
