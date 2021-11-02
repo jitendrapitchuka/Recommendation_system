@@ -22,6 +22,9 @@ class movie(models.Model):
     Image_url=models.URLField(max_length=200)
     text=models.TextField(max_length=400)
 
+    def __str__(self):
+        return self.title
+
 class fav(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     movie=models.ForeignKey(movie, on_delete=models.CASCADE)

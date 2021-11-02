@@ -23,6 +23,13 @@
           <div class="card-title text-center">
             {{movie.title}}
           </div>
+          <div class="text-info">
+          <p class="card-text text-center" > {{movie.genres}}
+
+          </p>
+        </div>
+           
+          
         </div>
       
       </div>
@@ -30,8 +37,52 @@
     <div>
    <a href="{% url 'movie_add' movie.pk %}" class="btn btn-outline-primary">Add to my list</button>
     </a>
+    
   </div>
+  
+   
+  
     </div>
+    <br>
+    <h6>About:
+      <p>
+        {{movie.text}}
+      </p>
+      </h6>
+
+<br>
+<br>
+    <div class="container-fluid">
+      <h2>Recommendations for you</h2>
+    </div>
+    <hr>
+    <br>
+    
+    <div class="row">
+      {%if li%}
+      {%for x in li%}
+      <div class="col-sm-2 col-md-2">
+        <div class="thumbnail">
+        <div class="card">
+         
+            <img src="{{x.Image_url}}"  style="width:100%" alt="Card image" class="rounded">
+         
+  
+            <div class="card-title text-center">
+              {{x.title}}
+            </div>
+            <div class="text-info">
+              <p class="card-text text-center" > {{movie.genres}}
+    
+              </p>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+        {%endfor%}
+      </div>
+  {%endif%}
     {%else%}
   <h1>login Required </h1>
 

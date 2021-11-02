@@ -3,9 +3,11 @@
  
       <div class="row">
       {% for x in page_obj.object_list %}
+      
       <div class="col-sm-2 col-md-2">
         <div class="thumbnail">
         <div class="card">
+          
           <a href="{% url 'detail' x.pk %}">
             <img src="{{x.Image_url}}"  style="width:100%" alt="Card image" class="rounded">
           </a>
@@ -17,7 +19,7 @@
         
         </div>
       </div>
-    
+      
        {% endfor %}
   </div>
   <div class="container p-3 my-3 bg-dark text-white">
