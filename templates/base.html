@@ -11,31 +11,41 @@
 
 </head>
 <body>
-    
-    <nav class="navbar mynav"  role="navigation" id='navbar'>
+  
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid"> 
+ <!--   <nav class="navbar mynav"  role="navigation" id='navbar'>-->
 
-        <div class="container">
-            <a class='navbar-brand mynav' href="{%url 'homepage'%}">Recommendation system</a>
+       
+            <a class='navbar-brand' href="{%url 'homepage'%}">Recommendation system</a>
 
 <ul class="nav navbar-nav navbar-right">
 
     {%if user.is_authenticated%}
  
- <li><a href="{%url 'accounts:logout'%}">logout</a></li>
- <li><a href="{%url 'my_list'%}">My list</a></li>
+ <li ><a href="{%url 'accounts:logout'%}" class="nav-item nav-link px-3">logout</a></li>
+ <li><a href="{%url 'my_list'%}" class="nav-item nav-link px-3">My list</a></li>
  
 
  {%else%}
 
 
+    <li><a href="{%url 'accounts:signup'%}" class="nav-item nav-link px-3"> Sign Up</a></li>
+    
+    <li><a href="{%url 'accounts:login'%}" class="nav-item nav-link px-3"> Login</a></li>
+  </ul>
+  <!--
  <li><a href="{%url 'accounts:login'%}">login</a></li>
  <li><a href="{%url 'accounts:signup'%}">signup</a></li>
+ -->
  {%endif%}
-</ul>
- </div>
-  </nav>
+
+
+</div>
+</nav>
   <div>
-      <center>
+      <br>
+<br>      <center>
 
     {%if user.is_authenticated%}
         welcome {{user.username}}
